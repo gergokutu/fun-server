@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize')
-const db = require('./db')
+const db = require('../db')
 
-const TestModel = db.define(
-  'testModel',
+const Movie = db.define(
+  'movie',
   {
     title: {
       type: Sequelize.STRING,
-      field: 'title',
+      field: 'Title',
       allowNull: false
     },
     posterUrl: {
@@ -16,7 +16,5 @@ const TestModel = db.define(
     }
   },
 
-  { timestamp: false, tablename: 'testTable'}
+  { timestamp: false, tablename: 'movies' }
 )
-
-module.exports = TestModel
