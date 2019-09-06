@@ -6,7 +6,7 @@ const middleware = cors()
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 
-// const somethingRouter = require('./model/router')
+const router = require('./testRouter')
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -14,7 +14,7 @@ const port = process.env.PORT || 4000
 app.use(middleware)
 app.use(jsonParser)
 
-// app.use(somethingRouter)
+app.use(router)
 
 app.get('/', (req, res) => res.send('/get » Server is running'))
 app.listen(port, () => console.log(`Server listening on ${port}`))
