@@ -16,5 +16,7 @@ const Movie = db.define(
     }
   },
 
-  { timestamp: false, tablename: 'movies' }
+  { timestamps: false, tableName: 'movies' }
 )
+
+module.exports = Movie
