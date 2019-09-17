@@ -50,7 +50,10 @@ router.delete(
   async (req, res, next) => {
     try {
       const movieToDelete = await Movie.destroy({ where: {id: req.params.id} })
-      res.status(204).end()
+      if (movieToDelete) {
+        res.status(204).end()
+      }
+      res.status(404).end()
     } catch (error) {
         next(error)
     }
