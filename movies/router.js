@@ -12,7 +12,7 @@ router.get(
       const movies = await Movie.findAll()
       res.send(movies)
     } catch (error) {
-       next(error)
+      next(error)
     }
   }
 )
@@ -31,7 +31,7 @@ router.post(
       })
       res.send(movie)
     } catch (error) {
-        next(error)
+      next(error)
     }
   }
 )
@@ -40,7 +40,13 @@ router.post(
 router.put(
   '/movies/:id',
   async (req, res, next) => {
-    // const movieToChange = await Movie...
+    const movieToChange = await Movie.findOne({ where: {id: req.params.id} })
+    if (movieToChange) {
+      movieToChange.update(req.body)
+      res.send(movieToChange)
+    } else {
+      res.status(404).end()
+    }
   }
 )
 
