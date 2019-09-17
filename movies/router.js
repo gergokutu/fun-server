@@ -3,27 +3,57 @@ const router = new Router()
 
 const Movie = require('./model')
 
-const request = require('superagent')
+// const request = require('superagent')
 
 router.get(
   '/movies',
   async (req, res, next) => {
     try {
-    const movies = await Movie.findAll()
-    res.send(movies)
+      const movies = await Movie.findAll()
+      res.send(movies)
     } catch (error) {
-      console.error(error)
+       next(error)
     }
-  })
+  }
+)
 
-  // I need movie posters for the memory cards » db
-  // POST!!!
-
+// I need movie posters for the memory cards » db
+// POST!!!
 router.post(
   '/movies',
   async (req, res, next) => {
-    const movie = await Movie.findOrCreate({ where: {title: req.body.title, posterUrl: req.body.posterUrl} })
-    res.send(movie)
+    try {
+      const movie = await Movie.findOrCreate({ 
+        where: {
+          title: req.body.title, 
+          posterUrl: req.body.posterUrl
+        } 
+      })
+      res.send(movie)
+    } catch (error) {
+        next(error)
+    }
+  }
+)
+
+// Update » put (whole entity) vs patch (part)
+router.put(
+  '/movies/:id',
+  async (req, res, next) => {
+    // const movieToChange = await Movie...
+  }
+)
+
+// Delete » destroy
+router.delete(
+  '/movies/:id',
+  async (req, res, next) => {
+    try {
+      const movieToDelete = await Movie.destroy({ where: {id: req.params.id} })
+      res.status(204).end()
+    } catch (error) {
+        next(error)
+    }
   }
 )
 
