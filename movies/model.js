@@ -7,7 +7,7 @@ const Movie = db.define(
     title: {
       type: Sequelize.STRING,
       field: 'Title',
-      allowNull: false
+      allowNull: true
     },
     posterUrl: {
       type: Sequelize.STRING,
