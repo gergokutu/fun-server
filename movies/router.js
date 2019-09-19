@@ -14,22 +14,21 @@ router.get(
 
     try {
       const movies = await request.get('https://api.themoviedb.org/3/discover/movie?page=1&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=377f16c90eeda4700f91c1925bbe3668')
-      const posters = movies.body.results.map(poster => base_url.concat(size.concat(poster.poster_path)))
-      console.log('CLG:',posters)
-      // how to get all the pages not only the first (of 500)
-      // how to get the original_title as well from tmdb...
-
-      // how to fill up Movie model » posterUrl from an array
-      posters.map(async (url) => {
+      const { results } = movies.body
+      
+      // how to get all the pages not only the first (of 500) - ?
+      // how to get the original_title as well from tmdb... - ok
+      // how to fill up Movie model » posterUrl from an array - ok
+      results.map(async (movie) => {
         const movies = await Movie.create(
           {
-            title: 'original_title',
-            posterUrl: url
+            title: movie.original_title,
+            posterUrl: base_url.concat(size.concat(movie.poster_path))
           }
         )
       })
       
-      res.send(posters)
+      res.send(movies)
 
     } catch (error) {
       next(error)
