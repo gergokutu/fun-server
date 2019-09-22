@@ -6,7 +6,7 @@ const middleware = cors()
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 
-const router = require('./testRouter')
+const router = require('./movies/router')
 
 const app = express()
 const port = process.env.PORT || 4000
