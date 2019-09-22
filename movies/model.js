@@ -13,6 +13,26 @@ const Movie = db.define(
       type: Sequelize.STRING,
       field: 'posterUrl',
       allowNull: false
+    },
+    overview: {
+      type: Sequelize.TEXT,
+      field: 'overview',
+      allowNull: false
+    },
+    rate: {
+      type: Sequelize.STRING,
+      field: 'rate',
+      allowNull: false
+    },
+    votes: {
+      type: Sequelize.STRING,
+      field: 'votes',
+      allowNull: false
+    },
+    release: {
+      type: Sequelize.STRING,
+      field: 'release',
+      allowNull: false
     }
   },
 
