@@ -1,5 +1,6 @@
 function paginate(
-  totalItems,
+  // totalItems,
+  totalItems = 100,
   currentPage = 1,
   pageSize = 10,
   maxPages = 10
@@ -15,6 +16,7 @@ function paginate(
   }
 
   let startPage, endPage;
+
   if (totalPages <= maxPages) {
       // total pages less than max so show all pages
       startPage = 1;
@@ -58,3 +60,5 @@ function paginate(
       pages: pages
   };
 }
+
+console.log('paginate():', paginate())
