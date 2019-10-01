@@ -58,7 +58,7 @@ router.get(
 
     try {
       const movies = await Movie.findAll()
-      console.log('get/movies:', movies)
+      // console.log('get/movies:', movies)
       res.send(movies)
     } catch (error) {
       next(error)
