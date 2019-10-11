@@ -58,7 +58,6 @@ router.get(
   }
 )
 
-// I need movie posters for the memory cards » db
 // POST!!!
 router.post(
   '/movies',
