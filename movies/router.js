@@ -15,7 +15,7 @@ router.get(
     try {
       // how to get all the pages not only the first (of 500) - ok
       // pageNumber < 501
-      for (let pageNumber = 1; pageNumber < 5; pageNumber++) {
+      for (let pageNumber = 1; pageNumber < 9; pageNumber++) {
         const movies = await request.get(`https://api.themoviedb.org/3/discover/movie?page=${pageNumber}&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=377f16c90eeda4700f91c1925bbe3668`)
         const { results } = movies.body
         console.log('Copy-movies:', results)
