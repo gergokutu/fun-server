@@ -49,16 +49,8 @@ router.get(
 router.get(
   '/movies',
   async (req, res, next) => {
-    // pagination?
-    // const limit = Math.min(req.query.limit || 25, 500)
-    // console.log('limit:', limit)
-    // const offset = req.query.offset || 0
-    // console.log('offset:', offset)
-    // const movies = await Movie.findAndCountAll({limit, offset})
-
     try {
       const movies = await Movie.findAll()
-      // console.log('get/movies:', movies)
       res.send(movies)
     } catch (error) {
       next(error)
@@ -66,7 +58,6 @@ router.get(
   }
 )
 
-// I need movie posters for the memory cards » db
 // POST!!!
 router.post(
   '/movies',
